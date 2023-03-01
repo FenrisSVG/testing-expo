@@ -1,0 +1,51 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+
+let advice = [];
+---
+
+<Layout title="Advice generator app coding.">
+  <main>
+    <Card />
+  </main>
+</Layout>
+
+<script>
+  //Llamada a la API.
+  const advice = document.getElementById("advice");
+  const number = document.querySelector('span');
+  const body = document.querySelector('q')
+
+  const OPTIONS = {
+  method: "GET",
+  };
+  /**
+      @PARAMS myparams
+      @API_ENDPOINT STRING TEXT CALLING API.
+      @OPTIONS OPTIONS FOR FETCH DATA (GET)
+      @RETURNS Datos de la API para plasmarlo en el div y el usuario pueda verlos.
+      * ! EL ID UNICAMENTE SERA DEL 1 AL 100.
+      * ? Creo que esta volviendo a crear todo el HTML
+      * TODO: Arreglar el problema con el ancho y alto de la card.
+  */
+  if (advice) {
+      advice.addEventListener("click", async () => {
+        let slip_id = Math.floor(Math.random() * 150);
+
+        const API_ENDPOINT = `https://api.adviceslip.com/advice/${slip_id}`;
+
+        const res = await fetch(API_ENDPOINT, OPTIONS)
+                        .then((res) => {
+        if (!res.ok) throw new Error(res.statusText);
+            return res.json();
+        })
+        .catch((err) => console.log(err));
+          
+        number.innerHTML = 'ADVICE #' + res.slip.id
+        body.innerHTML = res.slip.advice
+      });
+  }
+</script>
+
+
