@@ -36,12 +36,11 @@ let advice = [];
         const API_ENDPOINT = `https://api.adviceslip.com/advice/${slip_id}`;
 
         const res = await fetch(API_ENDPOINT, OPTIONS)
-                        .then((res) => {
-        if (!res.ok) throw new Error(res.statusText);
-            return res.json();
+                        .then((response) => {
+                              if (!response.ok) throw new Error(response.statusText);
+                        return response.json();
         })
         .catch((err) => console.log(err));
-          
         number.innerHTML = 'ADVICE #' + res.slip.id
         body.innerHTML = res.slip.advice
       });
