@@ -68,7 +68,7 @@ describe('Should visit and show the page', () => {
     cy.title().should('eq','Advice generator app coding.')
   })
 
-  it('Pruebas Unitarias Advice Generator', () => {
+  it.only('Pruebas Unitarias Advice Generator', () => {
     cy.log('Escenarios (2) de pruebas Unitarias')
     /**
      * Prueba Unitaria #1 Hacer click al botón la API nos devuelve texto.
@@ -86,7 +86,7 @@ describe('Should visit and show the page', () => {
     cy.request('GET',API_ENDPOINT).as('advices')
     cy.get('@advices').then((res) => {
       //cy.log(JSON.stringify(res.slip));
-      expect(Number.isNaN(slip_id), slip_id.toString()).to.eq(false)
+      expect(Number.isNaN(slip_id), 'Esto no es un number').to.eq(true)
     })
   })
 })

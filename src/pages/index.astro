@@ -18,7 +18,7 @@ let advice = [];
   const body = document.querySelector('q')
 
   const OPTIONS = {
-  method: "GET",
+       method: "GET",
   };
   /**
       @PARAMS myparams
@@ -32,6 +32,7 @@ let advice = [];
   if (advice) {
       advice.addEventListener("click", async () => {
         let slip_id = Math.floor(Math.random() * 150);
+        console.log(typeof slip_id)
 
         const API_ENDPOINT = `https://api.adviceslip.com/advice/${slip_id}`;
 
@@ -41,6 +42,7 @@ let advice = [];
                         return response.json();
         })
         .catch((err) => console.log(err));
+        
         number.innerHTML = 'ADVICE #' + res.slip.id
         body.innerHTML = res.slip.advice
       });
