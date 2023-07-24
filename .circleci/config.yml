@@ -49,4 +49,4 @@ workflows:
           # Starts web server for E2E tests - replace with your own server invocation
           # https://docs.cypress.io/guides/continuous-integration/introduction#Boot-your-server
           start-command: npm start
-          cypress-command: 'npx cypress run --record --parallel'
+          cypress-command: 'npx cypress run --record --key a8045b81-32a5-447e-bb53-a3e0dd0a0fef --parallel'
