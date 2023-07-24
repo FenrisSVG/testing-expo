@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "test": "start http://localhost:3000 cypress:open"
   },
   "dependencies": {
     "@astrojs/tailwind": "^3.0.1",
