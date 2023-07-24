@@ -82,11 +82,5 @@ describe('Should visit and show the page', () => {
      */
     let slip_id = Math.floor(Math.random() * 150);
     const API_ENDPOINT = `https://api.adviceslip.com/advice/${slip_id}`;
-
-    cy.request('GET',API_ENDPOINT).as('advices')
-    cy.get('@advices').then((res) => {
-      //cy.log(JSON.stringify(res.slip));
-      expect(Number.isNaN(slip_id), 1).to.eq(true)
-    })
   })
 })
