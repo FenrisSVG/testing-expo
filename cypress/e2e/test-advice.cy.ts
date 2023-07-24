@@ -12,7 +12,7 @@ describe('Should visit and show the page', () => {
      */
     cy.log('Webpage test')
     cy.get('[data-test-id="advice-card"]').should('be.visible')
-    cy.get('[data-test-id="advice-number"]').should('contain', 'ADVICE #0')
+    cy.get('[data-test-id="advice-number"]').should('contain', 'ADVICE #0', { match: false })
     cy.get('[data-test-id="advice-body"]').should('contain', 'Click en el boton para generar un nuevo advice!.')
   })
 
@@ -68,7 +68,7 @@ describe('Should visit and show the page', () => {
     cy.title().should('eq','Advice generator app coding.')
   })
 
-  it.only('Pruebas Unitarias Advice Generator', () => {
+  it('Pruebas Unitarias Advice Generator', () => {
     cy.log('Escenarios (2) de pruebas Unitarias')
     /**
      * Prueba Unitaria #1 Hacer click al botón la API nos devuelve texto.
@@ -86,7 +86,7 @@ describe('Should visit and show the page', () => {
     cy.request('GET',API_ENDPOINT).as('advices')
     cy.get('@advices').then((res) => {
       //cy.log(JSON.stringify(res.slip));
-      expect(Number.isNaN(slip_id), 'Esto no es un number').to.eq(true)
+      expect(Number.isNaN(slip_id), 1).to.eq(true)
     })
   })
 })
